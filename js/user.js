@@ -164,8 +164,9 @@ async function removeFavoriteFromUser(star) {
   //Remove story from user's favorites
   $li.attr("favorite", false);
   const index = userFavs.indexOf(story);
-  if (index > -1) {
+  if (index >= -1) {
     userFavs.splice(index, 1);
+    console.log(userFavs);
   }
 }
 

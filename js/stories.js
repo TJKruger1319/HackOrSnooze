@@ -20,9 +20,9 @@ async function getAndShowStoriesOnStart() {
  */
 
 function generateStoryMarkup(story) {
-  // console.debug("generateStoryMarkup", story);
-
-  const hostName = story.getHostName(story.url);
+  //console.debug("generateStoryMarkup", story);
+  const storyObj = new Story(story);
+  const hostName = storyObj.getHostName(story.url);
   return $(`
       <li id="${story.storyId}">
         <a href="${story.url}" target="a_blank" class="story-link">
