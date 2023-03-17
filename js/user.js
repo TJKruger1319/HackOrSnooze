@@ -192,10 +192,9 @@ async function removeUserStory(myStory) {
       token: token
     }
   });
-  console.log(response);
 
-  //Remove story in the HTML
-  $li.remove();
+  //Reloads doc to remove from HTML, favorites, and storyList
+  location.reload();
 }
 
 $("ol").on("click", "li button", function(e){

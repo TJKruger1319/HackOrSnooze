@@ -94,7 +94,6 @@ async function submitStory(evt) {
     {title, author, url});
 
   $submitForm.trigger("reset");
-
 }
 
 $submitForm.on("submit", submitStory);
