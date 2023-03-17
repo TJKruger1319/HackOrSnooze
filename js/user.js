@@ -176,3 +176,28 @@ $("ol").on("click", "#star", function(e){
     removeFavoriteFromUser(this);
   }
 });
+
+async function removeUserStory(myStory) {
+  console.debug("removeUserStory");
+  
+  //Declaration
+  const $li = $(myStory).closest("li");
+  const story = $li.data();
+  const storyId = story.storyId;
+  const token = currentUser.loginToken;
+
+  //Delete story from API
+  const response = await axios.delete(`${BASE_URL}/stories/${storyId}`, {
+    data: {
+      token: token
+    }
+  });
+  console.log(response);
+
+  //Remove story in the HTML
+  $li.remove();
+}
+
+$("ol").on("click", "li button", function(e){
+  removeUserStory(this);
+});
