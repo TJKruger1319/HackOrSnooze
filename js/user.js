@@ -168,13 +168,11 @@ async function removeFavoriteFromUser(star) {
   }
 }
 
-$("ol").on("click", "li i", function(e){
+$("ol").on("click", "#star", function(e){
   const $li = $(this).closest("li");
   if ($li.attr("favorite") === "false") {
     addFavoriteToUser(this);
   } else if ($li.attr("favorite") === "true") {
     removeFavoriteFromUser(this);
   }
-
-
 });

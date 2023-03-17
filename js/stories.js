@@ -45,7 +45,7 @@ function putStoriesOnPage() {
   // loop through all of our stories and generate HTML for them
     let userFavs;
     let ownStories;
-    let $star = '<i class="far fa-star" aria-hidden="true"></i>';
+    let $star = '<i class="far fa-star" id="star" aria-hidden="true"></i>';
     let favBool = false;
   if(currentUser) {
     userFavs = currentUser.favorites;
@@ -57,11 +57,11 @@ function putStoriesOnPage() {
       for (let fav of userFavs) {
         if(fav.storyId === story.storyId) {
           favBool = true;
-          $star = '<i class="fas fa-star" aria-hidden="true"></i>';
+          $star = '<i class="fas fa-star" id="star" aria-hidden="true"></i>';
           break;
         } else {
           favBool = false;
-          $star = '<i class="far fa-star" aria-hidden="true"></i>';
+          $star = '<i class="far fa-star" id="star" aria-hidden="true"></i>';
         }
       }
       for (let own of ownStories) {
