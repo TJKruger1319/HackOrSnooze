@@ -81,6 +81,7 @@ class StoryList {
       token: token,
       story: {title, author, url}
     })
+    console.log(response.data.story);
     const story = new Story(response.data.story);
     return story;
   }

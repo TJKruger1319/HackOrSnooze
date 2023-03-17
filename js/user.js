@@ -132,7 +132,7 @@ async function addFavoriteToUser(star) {
   const response = await axios.post(`${BASE_URL}/users/${username}/favorites/${storyId}`, {
     token: token
   })
-  console.log(response);
+
 
   //Added to user's favorites
   $li.attr("favorite", true);
@@ -159,14 +159,12 @@ async function removeFavoriteFromUser(star) {
       token: token
     }
   });
-  console.log(response);
 
   //Remove story from user's favorites
   $li.attr("favorite", false);
   const index = userFavs.indexOf(story);
   if (index >= -1) {
     userFavs.splice(index, 1);
-    console.log(userFavs);
   }
 }
 

@@ -44,10 +44,12 @@ function putStoriesOnPage() {
 
   // loop through all of our stories and generate HTML for them
     let userFavs;
+    let ownStories;
     let $star = '<i class="far fa-star" aria-hidden="true"></i>';
     let favBool = false;
   if(currentUser) {
     userFavs = currentUser.favorites;
+    ownStories = currentUser.ownStories;
   }
   for (let story of storyList.stories) {
     const $story = generateStoryMarkup(story);
@@ -60,6 +62,15 @@ function putStoriesOnPage() {
         } else {
           favBool = false;
           $star = '<i class="far fa-star" aria-hidden="true"></i>';
+        }
+      }
+      for (let own of ownStories) {
+        if(own.storyId === story.storyId) {
+          const $deleteBtn = document.createElement("button");
+          const $minus = "<i class='fas fa-minus-circle'></i>";
+          $($deleteBtn).append($minus).addClass("deleteBtn");
+          const $storyAuthor = $story.children("small.story-author");
+          $storyAuthor.append($deleteBtn);
         }
       }
     $story.prepend($star).attr("favorite", favBool).data(story);
@@ -87,3 +98,4 @@ async function submitStory(evt) {
 }
 
 $submitForm.on("submit", submitStory);
+
