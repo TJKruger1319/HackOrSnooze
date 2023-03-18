@@ -56,3 +56,16 @@ function navFavoritesClick() {
 }
 
 $navFavorites.on("click", navFavoritesClick);
+
+function navMyStoriesClick() {
+  console.debug("navMyStoriesClick");
+  hidePageComponents();
+  $myStoriesList.empty();
+  for (let story of currentUser.ownStories) {
+    const $story = generateStoryMarkup(story);
+    $myStoriesList.append($story);
+  }
+  $myStoriesList.show();
+}
+
+$navMyStories.on("click", navMyStoriesClick);
